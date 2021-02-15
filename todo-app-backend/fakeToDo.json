@@ -9,7 +9,7 @@
     "id": 2,
     "task": "Aliquam non mauris.",
     "due": "14/04/2021",
-    "completed": true
+    "completed": false
   },
   {
     "id": 3,
@@ -39,7 +39,7 @@
     "id": 7,
     "task": "Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
     "due": "20/03/2021",
-    "completed": true
+    "completed": false
   },
   {
     "id": 8,
@@ -63,12 +63,12 @@
     "id": 11,
     "task": "Pellentesque ultrices mattis odio.",
     "due": "27/03/2021",
-    "completed": true
+    "completed": false
   },
   {
     "id": 12,
     "task": "Nulla tellus.",
     "due": "25/04/2021",
-    "completed": true
+    "completed": false
   }
 ]

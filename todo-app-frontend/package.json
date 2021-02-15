@@ -2,6 +2,7 @@
   "name": "todo-app-frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@geist-ui/react": "^2.1.0-canary.2",
     "@testing-library/jest-dom": "^5.11.4",
