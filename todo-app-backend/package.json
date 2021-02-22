@@ -1,5 +1,5 @@
 {
-  "name": "todo-app",
+  "name": "todo-app-backend",
   "version": "1.0.0",
   "description": "Sample project for 17356 TA's to use in Recitations",
   "main": "index.js",
