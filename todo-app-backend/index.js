@@ -6,15 +6,16 @@ const port = 3001;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// import fake data
-const fakeData = require('./fakeToDo.json');
+// import helpers
+const { getTodoData } = require('./helpers/todos');
 
 app.get('/', (req, res) => {
   res.status(200).send('Hello 17-356 People!');
 });
 
 app.get('/todos', (req, res) => {
-  res.status(200).send(fakeData);
+  let data = getTodoData();
+  res.status(200).send(data);
 });
 
 app.post('/addTodo', (req, res) => {
