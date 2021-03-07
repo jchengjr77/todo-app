@@ -1,17 +1,23 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+
+// easypeasy imports
+import { useStoreActions } from 'easy-peasy';
 
 // component imports
-import { Grid, Text } from '@geist-ui/react';
+import { Text } from '@geist-ui/react';
 import AddTodoButton from './components/AddTodoButton';
 import DisplayToggle from './components/DisplayToggle';
-import TodoItem from './components/TodoItem';
+import Todos from './components/Todos';
 
 function App() {
-  const [todoList, setTodoList] = useState();
-  const [showCompleted, setShowCompleted] = useState(false);
+  // const [todoList, setTodoList] = useState();
+  // const [showCompleted, setShowCompleted] = useState(false);
+
+  const fetchTodos = useStoreActions((actions) => actions.fetchTodos);
 
   // fetching the async/await way
+  /*
   async function fetchTodos() {
     try {
       const response = await fetch('/todos').then((res) => (res = res.json()));
@@ -20,6 +26,7 @@ function App() {
       console.error(e);
     }
   }
+  */
 
   // We just want to show you the alternate way to "fetch": (called promise-chaining)
   /*
@@ -34,13 +41,13 @@ function App() {
 
   useEffect(() => {
     fetchTodos();
-  }, []);
+  }, [fetchTodos]);
 
   return (
     <div className='App'>
       <Text h1>Todo App</Text>
       <AddTodoButton />
-      <DisplayToggle toggleHandler={setShowCompleted} />
+      {/* <DisplayToggle toggleHandler={setShowCompleted} />
       <Grid.Container gap={2} justify='center'>
         {todoList
           ? todoList.map((todo) => {
@@ -54,7 +61,9 @@ function App() {
               return null;
             })
           : null}
-      </Grid.Container>
+      </Grid.Container> */}
+      <DisplayToggle />
+      <Todos />
     </div>
   );
 }

@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// easypeasy store imports
+import { StoreProvider } from 'easy-peasy';
+import store from './store/store';
+
 // Geist UI import
 import { GeistProvider, CssBaseline } from '@geist-ui/react';
 
@@ -11,7 +15,9 @@ ReactDOM.render(
   <React.StrictMode>
     <GeistProvider>
       <CssBaseline />
-      <App />
+      <StoreProvider store={store}>
+        <App />
+      </StoreProvider>
     </GeistProvider>
   </React.StrictMode>,
   document.getElementById('root')
