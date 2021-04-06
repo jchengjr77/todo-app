@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 
 // easypeasy imports
@@ -7,8 +7,33 @@ import { useStoreState, useStoreActions } from 'easy-peasy';
 // import components
 import { Toggle, Text } from '@geist-ui/react';
 
+const getWindowDimensions = () => {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height,
+  };
+};
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
+}
+
 const DisplayToggle = (props) => {
-  // let { toggleHandler } = props;
+  const { height, width } = useWindowDimensions();
 
   const showCompleted = useStoreState((state) => state.showCompleted);
 
@@ -16,8 +41,12 @@ const DisplayToggle = (props) => {
     (actions) => actions.toggleShowCompleted
   );
 
+  const smallScreen = height > 1.5 * width;
   return (
-    <div className='toggleContainer'>
+    <div
+      className='toggleContainer'
+      style={smallScreen ? { flexDirection: 'column' } : {}}
+    >
       <Text p>Show Completed</Text>
       <Toggle
         value={showCompleted}

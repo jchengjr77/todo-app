@@ -10,12 +10,12 @@ const Todos = () => {
   const showCompleted = typedHooks.useStoreState((state) => state.showCompleted);
 
   return (
-    <Grid.Container gap={2} justify='center'>
+    <Grid.Container gap={2} justify='center' >
       {todoList
         ? todoList.map((todo) => {
             if (todo.completed === showCompleted) {
               return (
-                <Grid>
+                <Grid xs={20} md={5}>
                   <TodoItem todo={todo} />
                 </Grid>
               );

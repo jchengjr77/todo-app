@@ -18,7 +18,6 @@ const TodoItem = (props: TodoItemProps) => {
   return (
     <Card
       hoverable
-      style={{ width: '25vw' }}
       type={todo.completed ? 'lite' : 'cyan'}
     >
       <Text h4>{todo.task}</Text>
