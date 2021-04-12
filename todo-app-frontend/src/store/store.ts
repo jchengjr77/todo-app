@@ -4,9 +4,9 @@ import { Action, Thunk } from 'easy-peasy';
 // interface
 export interface Todo {
   id: Number;
-  completed: Boolean;
   task: String;
   due: String;
+  completed: Boolean;
 }
 
 export interface StoreModel {
@@ -26,16 +26,16 @@ const store = createStore<StoreModel>({
   }),
   showCompleted: false,
   toggleShowCompleted: action((state, payload) => {
-    if (typeof payload !== 'boolean') {
-      throw Error('Invalid showCompleted value');
-    }
+    // if (typeof payload !== 'boolean') {
+    //   throw Error('Invalid showCompleted value');
+    // }
     state.showCompleted = payload;
   }),
   fetchTodos: thunk(async (actions, _) => {
-    const todos = await fetch('/todos').then((res:Response) => (res.json()));
+    const todos = await fetch('/todos');
     actions.setTodos(todos);
   }),
 });
 
 export default store;
-export {typedHooks};
+export { typedHooks };

@@ -9,17 +9,13 @@ import { Toggle, Text } from '@geist-ui/react';
 
 const getWindowDimensions = () => {
   const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height,
-  };
+  return { width, height };
 };
 
-function useWindowDimensions() {
+const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
-
   useEffect(() => {
     function handleResize() {
       setWindowDimensions(getWindowDimensions());
@@ -30,10 +26,10 @@ function useWindowDimensions() {
   }, []);
 
   return windowDimensions;
-}
+};
 
 const DisplayToggle = (props) => {
-  const { height, width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   const showCompleted = useStoreState((state) => state.showCompleted);
 
@@ -42,6 +38,7 @@ const DisplayToggle = (props) => {
   );
 
   const smallScreen = height > 1.5 * width;
+
   return (
     <div
       className='toggleContainer'
@@ -50,7 +47,7 @@ const DisplayToggle = (props) => {
       <Text p>Show Completed</Text>
       <Toggle
         value={showCompleted}
-        onChange={(e) => toggleHandler(e.target.checked)}
+        onChange={(e) => toggleHandler(e.checked)}
       />
     </div>
   );

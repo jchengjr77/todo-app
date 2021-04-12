@@ -4,10 +4,9 @@ import * as React from 'react';
 import { Card, Tag, Text } from '@geist-ui/react';
 
 // import interfaces
-import {Todo} from '../store/store';
+import { Todo } from '../store/store';
 
-/* Converting to Typescript */
-// Define an interface
+// props interface
 interface TodoItemProps {
   todo: Todo;
 }
