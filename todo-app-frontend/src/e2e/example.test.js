@@ -31,6 +31,7 @@ beforeAll(async () => {
 describe('e2e test', () => {
   test('renders tiles from backend', async () => {
     await page.waitForSelector('.todo-tile');
+    await page.waitForSelector('#false-tile');
   });
   test('tile toggle works properly', async () => {
     await page.waitForSelector('.toggleContainer');
