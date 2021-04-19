@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-// length of completed list (should be pulled from backend)
+// length of completed list
 const completedLength = 4;
 
 let browser;
@@ -31,21 +31,25 @@ beforeAll(async () => {
 describe('e2e test', () => {
   test('renders tiles from backend', async () => {
     await page.waitForSelector('.todo-tile');
-    await page.waitForSelector('#false-tile');
+    await page.waitForSelector('.false-todo');
   });
+
   test('tile toggle works properly', async () => {
     await page.waitForSelector('.toggleContainer');
 
     await page.click('#toggle');
 
-    await page.waitForSelector('#true-tile');
+    await page.waitForSelector('.true-todo');
 
+    // $$ = querySelectorAll
+    // - returns an array of all elements with the specified selector
+    // (as opposed to $ = querySelector, returning the first occurance only)
     const tiles = await page.$$('.todo-tile');
     expect(tiles.length).toBe(completedLength);
   });
 });
 
 afterAll(async () => {
-  console.log('Finished e2e test.');
-  browser.close();
+  console.log('Finished e2e test');
+  //   browser.close();
 });

@@ -15,11 +15,11 @@ const Todos = () => {
   return (
     <Grid.Container gap={2} justify='center'>
       {todoList
-        ? todoList.map((todo, i) => {
+        ? todoList.map((todo) => {
             if (todo.completed === showCompleted) {
               return (
                 <Grid xs={20} md={5} 
-                  id={`${showCompleted}-tile`}>
+                  className={`${showCompleted}-todo`}>
                   <TodoItem todo={todo} />
                 </Grid>
               );
