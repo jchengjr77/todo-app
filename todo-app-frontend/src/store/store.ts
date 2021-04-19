@@ -26,13 +26,11 @@ const store = createStore<StoreModel>({
   }),
   showCompleted: false,
   toggleShowCompleted: action((state, payload) => {
-    // if (typeof payload !== 'boolean') {
-    //   throw Error('Invalid showCompleted value');
-    // }
     state.showCompleted = payload;
   }),
   fetchTodos: thunk(async (actions, _) => {
-    const todos = await fetch('/todos');
+    const todos = await fetch('/todos').then(res => res.json());
+    console.log(todos);
     actions.setTodos(todos);
   }),
 });

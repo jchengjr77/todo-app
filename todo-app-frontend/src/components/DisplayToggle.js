@@ -31,7 +31,10 @@ const useWindowDimensions = () => {
 const DisplayToggle = (props) => {
   const { width, height } = useWindowDimensions();
 
-  const showCompleted = useStoreState((state) => state.showCompleted);
+  const showCompleted = useStoreState((state) => {
+    console.log(state.showCompleted);
+    return state.showCompleted;
+  });
 
   const toggleHandler = useStoreActions(
     (actions) => actions.toggleShowCompleted
@@ -47,7 +50,8 @@ const DisplayToggle = (props) => {
       <Text p>Show Completed</Text>
       <Toggle
         value={showCompleted}
-        onChange={(e) => toggleHandler(e.checked)}
+        onChange={(e) => toggleHandler(e.target.checked)}
+        id='toggle'
       />
     </div>
   );

@@ -18,6 +18,7 @@ const TodoItem = (props: TodoItemProps) => {
     <Card
       hoverable
       type={todo.completed ? 'lite' : 'cyan'}
+      className="todo-tile"
     >
       <Text h4>{todo.task}</Text>
       <Card.Footer>

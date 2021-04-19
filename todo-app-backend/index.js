@@ -13,7 +13,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/todos', (req, res) => {
-  let data = getTodoData();
+  let data = getTodoData('jj');
+  console.log(data);
   res.status(200).send(data);
 });
 
